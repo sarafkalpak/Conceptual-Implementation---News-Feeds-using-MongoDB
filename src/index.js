@@ -13,7 +13,7 @@ app.use(express.json());
 app.get('/newFeeds', async(req,res)=>{
     res.send(await newsArticleModel.find().skip(Number(req.query.offset || 0)).limit(Number(req.query.limit || 10)));
 });
-const sanitize=(value , defaultValue)=>{
+const sanitize=(value, defaultValue)=>{
     if(value === null || value === undefined || isNaN(Number(value))){
         return defaultValue;
     }
