@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 8080
 
+const { newsArticleModel }= require('./connector');
 const onePageArticleCount = 10
 
 
@@ -9,7 +10,9 @@ const onePageArticleCount = 10
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-
+app.get('/newFeeds', async(req,res)=>{
+    res.send(await newsArticleModel.find().skip(Number(req.query.offset || 0)).limit(Number(req.query.limit || 10)));
+});
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
 
