@@ -3,7 +3,7 @@ const app = express()
 const port = 8080
 
 const { newsArticleModel }= require('./connector');
-const onePageArticleCount = 10
+const onePageArticleCount = 10;
 
 
 // Parse JSON bodies (as sent by API clients)
